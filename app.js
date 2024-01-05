@@ -1,4 +1,4 @@
-const apiKey = "c6705d4a1bc1422eb17161310240501";
+const apiKey = ${{ vars.key }};
 const link = "http://api.weatherapi.com/v1/current.json?key=" + apiKey + "&q=";
 
 async function weatherCall(input) {
@@ -20,7 +20,6 @@ async function weatherReturn(input) {
     return weather;
 }
 
-
 const button = document.getElementById("button");
 const loc = document.getElementById("location");
 const temp = document.getElementById("temp");
@@ -30,19 +29,13 @@ const time = document.getElementById("time");
 const ic = document.getElementById("con");
 const con = document.getElementById("con5");
 
-button.addEventListener("click", async () => {
-    try {
-        const input = document.getElementById("input");
-        const weather = await weatherReturn(input.value);
-        console.log(weather);
-        loc.innerHTML = weather.location.name + ", " + weather.location.country;
-        temp.innerHTML = weather.current.temp_c;
-        hum.innerHTML = weather.current.humidity + '%';
-        feel.innerHTML = weather.current.feelslike_c;
-        time.innerHTML = weather.current.last_updated;
-        ic.src = weather.current.condition.icon;
-        con.innerHTML = weather.current.condition.text;
-    } catch(error) {
-        console.log("error");
-    }
+
+button.addEventListener('click', async () => {
+    const weather = await weatherReturn(input);
+    console.log(weather);
+    loc.innerHTML = weather.location.name + ", " + weather.location.country;
+    temp.innerHTML = weather.current.temp_c;
+    hum.innerHTML = weather.current.humidity;
+    feel.innerHTML = weather.current.feelslike_c; 
 });
+    
