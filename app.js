@@ -1,4 +1,4 @@
-const apiKey = "c6705d4a1bc1422eb17161310240501";
+const apiKey = ${{ vars.key }};
 const link = "http://api.weatherapi.com/v1/current.json?key=" + apiKey + "&q=";
 
 async function weatherCall(input) {
