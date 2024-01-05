@@ -1,4 +1,4 @@
-const apiKey = ${{ vars.key }};
+const apiKey = "c6705d4a1bc1422eb17161310240501";
 const link = "http://api.weatherapi.com/v1/current.json?key=" + apiKey + "&q=";
 
 async function weatherCall(input) {
@@ -31,11 +31,14 @@ const con = document.getElementById("con5");
 
 
 button.addEventListener('click', async () => {
-    const weather = await weatherReturn(input);
-    console.log(weather);
+    const input = document.getElementById("input");
+    const weather = await weatherReturn(input.value);
     loc.innerHTML = weather.location.name + ", " + weather.location.country;
     temp.innerHTML = weather.current.temp_c;
     hum.innerHTML = weather.current.humidity;
     feel.innerHTML = weather.current.feelslike_c; 
+    time.innerHTML = weather.current.last_updated;
+    ic.src = weather.current.condition.icon;
+    con.innerHTML = weather.current.condition.text;
 });
     
