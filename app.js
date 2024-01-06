@@ -1,5 +1,5 @@
 const apiKey = "c6705d4a1bc1422eb17161310240501";
-const link = "http://api.weatherapi.com/v1/current.json?key=" + apiKey + "&q=";
+const link = "https://api.weatherapi.com/v1/current.json?key=" + apiKey + "&q=";
 
 let fahrenheit = false;
 
